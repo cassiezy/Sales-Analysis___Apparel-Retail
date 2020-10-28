@@ -419,10 +419,10 @@ sns.heatmap(cor)
 ## 2. Female customers bring in far more daily sales and profits than male customers.
 ## 3. Sales and profits on weekends are much higher than those at weekdays.
 ## 4. The number of customers on weekends was much higher than that in the middle of the week, regardless of the gender of customers, but there was no significant difference in terms of per capita consumption.
-      *Recommendation: Try more appealing in-store visual merchandising and piece matching to attract more female customers at weekends.*
+   *Recommendation: Try more appealing in-store visual merchandising and piece matching to attract more female customers at weekends.*
 ## 5. Product performance:
-      The best-selling item was T-shirts, with 70 percent of sales coming from women. The biggest loss was in jeans, with 80 per cent coming from women.
+   The best-selling item was T-shirts, with 70 percent of sales coming from women. The biggest loss was in jeans, with 80 per cent coming from women.
 ## 6. Channel preference:
-      The majority of the customers are between 20 and 40 years old, and both genders prefer to purchase Uniqlo offline.
-      Only customers in Wuhan, Guangzhou, Shanghai, Xi'an and Chongqing purchase online. Customers in Guangzhou prefer to buy online, while customers in other cities prefer to buy offline. 
-      *Recommendation: Different online marketing strategies could be adopted for Guangzhou and Wuhan.*
+   The majority of the customers are between 20 and 40 years old, and both genders prefer to purchase Uniqlo offline.
+   Only customers in Wuhan, Guangzhou, Shanghai, Xi'an and Chongqing purchase online. Customers in Guangzhou prefer to buy online, while customers in other cities prefer to buy offline. 
+   *Recommendation: Different online marketing strategies could be adopted for Guangzhou and Wuhan.*
