@@ -110,6 +110,29 @@ sns.barplot(x = 'channel', y = 'revenue_per_day', hue = 'wkd_ind', data = uni_wk
 ```
 ![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/1.1.png)
 
+```python
+# profit
+sns.barplot(x = 'channel', y = 'profit_per_day', hue = 'wkd_ind', data = uni_wkd)
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/1.2.png)
 
+```python
+# number of products per order
+sns.barplot(x = 'channel', y = 'uni_quant_of_order', hue = 'wkd_ind', data = uni_wkd)
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/1.3.png)
+
+```python
+# per capita consumption
+sns.barplot(x = 'channel', y = 'uni_revenue_of_customer', hue = 'wkd_ind', data = uni_wkd)
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/1.4.png)
+
+```python
+## Conclusion
+1. Offline average daily sales and profits are much higher than online
+2. Offline: sales and profits on weekends are almost twice as high as mid-week
+3. But there is little difference in terms of the number of products per order and the amount spent per person
+```
 
 ### B. Performance of difference gender (weekend vs. weekday)
