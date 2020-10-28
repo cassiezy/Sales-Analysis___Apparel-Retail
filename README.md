@@ -165,7 +165,7 @@ uni_gen.loc[uni_gen['wkd_ind'] =='Weekend', 'customer_per_day'] = uni_gen['custo
 
 uni_gen
 ```
-|gender_group |wkd_ind	|revenue  	|profit	|uni_quant_of_order	|uni_revenue_of_customer|revenue_per_day	profit_per_day	customer_per_day
+|gender_group |wkd_ind	|revenue  	|profit	|uni_quant_of_order	|uni_revenue_of_customer|revenue_per_day|	profit_per_day	|customer_per_day|
 | --------|----------|-----------|--------|----------|----------|----------|-------|------ |
 |Female	|Weekday	|1541781.47	|725916	|15278	|95.322304|308356.294	|145183.2	|3055.6|
 |Female	|Weekend	|985978.53	|474065	|9884	|93.745690|492989.265	|237032.5	|4942.0|
