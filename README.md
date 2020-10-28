@@ -154,16 +154,16 @@ uni_gen
 
 #### *Notice: There are five weekdays and only two weekends，therefore, add three columnsL: revenue_per_day, profit_per_day, customer_per_day*
 ```python
+uni_gen['revenue_per_day'] = uni_gen.apply(lambda x: x['revenue']/5 if x['wkd_ind']=='Weekday' else x['revenue']/2, axis=1)
+uni_gen['profit_per_day'] = uni_gen.apply(lambda x: x['profit']/5 if x['wkd_ind']=='Weekday' else x['profit']/2, axis=1)
+uni_gen['customer_per_day'] = uni_gen.apply(lambda x: x['customer']/5 if x['wkd_ind']=='Weekday' else x['customer']/2, axis=1)
+uni_gen
+
+"""
+# method 2
 uni_gen.loc[uni_gen['wkd_ind'] =='Weekday', 'revenue_per_day'] = uni_gen['revenue']/5
 uni_gen.loc[uni_gen['wkd_ind'] =='Weekend', 'revenue_per_day'] = uni_gen['revenue']/2
-
-uni_gen.loc[uni_gen['wkd_ind'] =='Weekday', 'profit_per_day'] = uni_gen['profit']/5
-uni_gen.loc[uni_gen['wkd_ind'] =='Weekend', 'profit_per_day'] = uni_gen['profit']/2
-
-uni_gen.loc[uni_gen['wkd_ind'] =='Weekday', 'customer_per_day'] = uni_gen['customer']/5
-uni_gen.loc[uni_gen['wkd_ind'] =='Weekend', 'customer_per_day'] = uni_gen['customer']/2
-
-uni_gen
+"""
 ```
 |gender_group |wkd_ind	|revenue  	|profit	|uni_quant_of_order	|uni_revenue_of_customer|revenue_per_day|	profit_per_day	|customer_per_day|
 | --------|----------|-----------|--------|----------|----------|----------|-------|------ |
@@ -276,9 +276,9 @@ uni_t_gender
 
 |product|	gender_group|	quant|
 | --------|----------|---------|
-|T恤	|Female	|13109|
-|T恤	|Male	|5253|
-|T恤	|Unkown	|63|
+|T-shirt	|Female	|13109|
+|T-shirt	|Male	|5253|
+|T-shirt	|Unkown	|63|
 
 ```
 colors = ['lightcoral', 'lightskyblue', 'yellowgreen']
@@ -416,7 +416,7 @@ sns.heatmap(cor)
 - **The correlation between the cost of goods and profit is very low, only 0.1; However, the price of goods and profits are highly correlated, with a correlation coefficient of 0.91.**
 
 
-# Final takeways and recommendations
+## Final takeways and recommendations
 ### 1. Offline average daily sales and profits are much higher than online, but there is no big difference in terms of the number of products per order and per capita consumption.
 ### 2. Female customers bring in far more daily sales and profits than male customers.
 ### 3. Sales and profits on weekends are much higher than those at weekdays.
