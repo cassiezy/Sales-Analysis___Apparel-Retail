@@ -84,4 +84,18 @@ uni_wkd
 |Offline	 |Weekday	|1698646.08	|786041	|1.122747	         |93.686322 |
 |Offline	 |Weekend	|1204616.29	|567741	|1.106883	         |92.801170 |
 
+#### There are five weekdays and only two weekends，therefore, add two columnsL: daily sales volume, daily profit
+```python
+uni_wkd['revenue_per_day'] = uni_wkd.apply(lambda x: x['revenue']/5 if x['wkd_ind']=='Weekday' else x['revenue']/2, axis=1)
+uni_wkd['profit_per_day'] = uni_wkd.apply(lambda x: x['profit']/5 if x['wkd_ind']=='Weekday' else x['profit']/2, axis=1)
+uni_wkd
+```
+|channel	 |wkd_ind	|revenue  	|profit	|uni_quant_of_order	|uni_revenue_of_customer|revenue_per_day	|profit_per_day|
+| --------|----------|-----------|--------|--------------------|-----------------------|-----------------|------------- |
+|Online	 |Weekday	|395302.56	|189110	|1.108044	         |92.739192              |79060.512	      |37822.0       |
+|Online	 |Weekend	|257868.58	|127754	|1.109055	         |93.502841              |128934.290	      |63877.0       |
+|Offline	 |Weekday	|1698646.08	|786041	|1.122747	         |93.686322              |339729.216	      |157208.2      |
+|Offline	 |Weekend	|1204616.29	|567741	|1.106883	         |92.801170              |602308.145	      |283870.5      |
+
+
 ### B. Performance of difference gender (weekend vs. weekday)
