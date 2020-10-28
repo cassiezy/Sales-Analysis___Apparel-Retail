@@ -86,7 +86,7 @@ uni_wkd
 |Offline	 |Weekend	|1204616.29	|567741	|1.106883	         |92.801170 |
 
 
-#### *Notice: There are five weekdays and only two weekends，therefore, add two columnsL: daily sales volume, daily profit*
+#### *Notice: There are five weekdays and only two weekends，therefore, add two columnsL: revenue_per_day, profit_per_day*
 ```python
 uni_wkd['revenue_per_day'] = uni_wkd.apply(lambda x: x['revenue']/5 if x['wkd_ind']=='Weekday' else x['revenue']/2, axis=1)
 uni_wkd['profit_per_day'] = uni_wkd.apply(lambda x: x['profit']/5 if x['wkd_ind']=='Weekday' else x['profit']/2, axis=1)
@@ -131,8 +131,37 @@ sns.barplot(x = 'channel', y = 'uni_revenue_of_customer', hue = 'wkd_ind', data 
 
 
 ## Conclusion
-- **1. Offline average daily sales and profits are much higher than online**
-- **2. Offline: sales and profits on weekends are almost twice as high as mid-week**
-- **3. But there is little difference in terms of the number of products per order and the amount spent per person**
+- **Offline average daily sales and profits are much higher than online**
+- **Offline: sales and profits on weekends are almost twice as high as mid-week**
+- **But there is little difference in terms of the number of products per order and the amount spent per person**
+
 
 ### B. Performance of difference gender (weekend vs. weekday)
+Using metrics: sales, profit, number of customers, per capita consumption
+```Python
+# groupby gender and wkd_ind to see the 4 metrics
+uni_gen=uni_clean.groupby(['gender_group','wkd_ind']).agg({'revenue':np.sum, 'profit': np.sum, 'customer':np.sum, 'uni_revenue_of_customer':np.mean}).reset_index()
+uni_gen
+```
+|gender_group |wkd_ind	|revenue  	|profit	|uni_quant_of_order	|uni_revenue_of_customer|
+| --------|----------|-----------|--------|--------------------|---------------------- |
+|Female	|Weekday	|1541781.47	|725916	|15278	|95.322304|
+|Female	|Weekend	|985978.53	|474065	|9884	|93.745690|
+|Male	|Weekday	|545806.31	|246549	|5961	|90.266569|
+|Male	|Weekend	|472764.34	|219686	|5077	|91.730576|
+|Unkown	|Weekday	|6360.86	|2686	|79	|79.708704|
+|Unkown	|Weekend	|3742.00	|1744	|46	|81.347826|
+
+#### *Notice: There are five weekdays and only two weekends，therefore, add three columnsL: revenue_per_day, profit_per_day, customer_per_day*
+```python
+uni_gen.loc[uni_gen['wkd_ind'] =='Weekday', 'revenue_per_day'] = uni_gen['revenue']/5
+uni_gen.loc[uni_gen['wkd_ind'] =='Weekend', 'revenue_per_day'] = uni_gen['revenue']/2
+
+uni_gen.loc[uni_gen['wkd_ind'] =='Weekday', 'profit_per_day'] = uni_gen['profit']/5
+uni_gen.loc[uni_gen['wkd_ind'] =='Weekend', 'profit_per_day'] = uni_gen['profit']/2
+
+uni_gen.loc[uni_gen['wkd_ind'] =='Weekday', 'customer_per_day'] = uni_gen['customer']/5
+uni_gen.loc[uni_gen['wkd_ind'] =='Weekend', 'customer_per_day'] = uni_gen['customer']/2
+
+uni_gen
+```
