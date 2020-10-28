@@ -43,12 +43,12 @@ uni_clean.describe(include='all')
 
 
 ## Question 1. Overall sales trend through time
-· Variables to use?
-    wkd_ind, revenue, profit, uni_quant_of_order, uni_revenue_of_customer, channel, gender_group
++ Variables to use?
+   - wkd_ind, revenue, profit, uni_quant_of_order, uni_revenue_of_customer, channel, gender_group
 
-· What data relationships are presented?    
-    - Compare sales performance of different channel/gender at weekends/weekdays
-    - Analyze from sales, profit, number of customers, number of products per order, per capita consumption and other dimensions
++ What data relationships are presented?    
+   - Compare sales performance of different channel/gender at weekends/weekdays
+   - Analyze from sales, profit, number of customers, number of products per order, per capita consumption and other dimensions
 
-· What kind of charts?    
-    Bar chart
++ What kind of charts?    
+   - Bar chart
