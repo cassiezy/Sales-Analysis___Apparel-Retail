@@ -345,7 +345,7 @@ plt.show()
 - **The most loss-making product was jeans; followed by T-shirts, Sports and Seasonal products. 80% of the sales loss came from women.**
 
 
-## 3. Which purchase channel is the most popular? 
+## Question 3. Which purchase channel is the most popular? 
 + Variables to use?
    - channel, gender_group, age_group, city
 
@@ -356,15 +356,73 @@ plt.show()
    - Bar chart
    
 #### seaborn color palette: https://seaborn.pydata.org/tutorial/color_palettes.html   
-   
-   
-## 4. What's the relationship between sales and COG?
+```
+uni_channel_gender = uni_clean.groupby(['gender_group','channel'])['customer'].sum().reset_index().sort_values('customer',ascending=False)
+uni_channel_gender
+sns.barplot(x='gender_group',y='customer',hue='channel',data=uni_channel_gender, palette="Paired")
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/3.1.png)
+```
+age_order = ['<20','20-24','25-29',  '30-34','35-39',  '40-44','45-49', '50-54','55-59','>=60', 'Unkown']
+uni_channel_age = uni_clean.groupby(['age_group','channel'])['customer'].sum().reset_index()
+uni_channel_age
+sns.barplot(x='age_group',y='customer',hue='channel',data=uni_channel_age, order=age_order, palette="Paired")
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/3.2.png)
+```
+uni_channel_city = uni_clean.groupby(['city','channel'])['customer'].sum().reset_index().sort_values('customer',ascending=False)
+uni_channel_city
+sns.barplot(x='city',y='customer',hue='channel',data=uni_channel_city, palette="Paired")
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/3.3.png)
+
+## Conclusion
+- **Customers of different genders prefer offline purchase.**
+- **The majority of the customers are between 20 and 40 years old, and they all prefer to purchase Uniqlo offline.**
+- **Only customers in Wuhan, Guangzhou, Shanghai, Xi'an and Chongqing will buy online. Customers in Guangzhou prefer to buy online, while customers in Wuhan have no obvious preference. Customers in other cities prefer to buy offline.**
+
+
+## Question 4. What's the relationship between sales and COG?
 + Variables to use?
-   - wkd_ind, revenue, profit, uni_quant_of_order, uni_revenue_of_customer, channel, gender_group
+   - revenue，cost
 
 + What data relationships are presented?    
-   - Compare sales performance of different channel/gender at weekends/weekdays
-   - Analyze from sales, profit, number of customers, number of products per order, per capita consumption and other dimensions
+   - The correlation between sales and costs.
 
 + What kind of charts?    
-   - Bar chart
+   - Thermal diagram/scatter plot
+
+```
+uni_clean['uni_revenue_of_product'] = uni_clean['revenue']/uni_clean['quant']
+uni_clean['uni_profit_of_product'] = uni_clean['profit']/uni_clean['quant']
+cor = uni_clean[['uni_revenue_of_product','uni_profit_of_product','unit_cost','unit_price']].corr()
+cor
+```
+
+|  |uni_revenue_of_product	|uni_profit_of_product	|unit_cost	|unit_price|
+|--|---------------------|------------------------|-----------|---------|
+|uni_revenue_of_product	|1.000000	|0.911672	|0.502248	|0.999996|
+|uni_profit_of_product	|0.911672	|1.000000	|0.102566	|0.911735|
+|unit_cost	|0.502248	|0.102566	|1.000000	|0.502125|
+|unit_price	|0.999996	|0.911735	|0.502125	|1.000000|
+```
+sns.heatmap(cor)
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/4.1.png)
+
+## Conclusion
+- **There is a positive correlation between unit sales and cost, with a correlation coefficient of 0.5. The sales is strongly positively correlated with the profit, and the correlation coefficient is 0.91. The correlation between the cost of goods and profit is very low, only 0.1; However, the price of goods and profits are highly correlated, with a correlation coefficient of 0.91.**
+
+
+# Final takeways and recommendations
+## 1. Offline average daily sales and profits are much higher than online, but there is no big difference in terms of the number of products per order and per capita consumption.
+## 2. Female customers bring in far more daily sales and profits than male customers.
+## 3. Sales and profits on weekends are much higher than those at weekdays.
+## 4. The number of customers on weekends was much higher than that in the middle of the week, regardless of the gender of customers, but there was no significant difference in terms of per capita consumption.
+      - *Recommendation: Try more appealing in-store visual merchandising and piece matching to attract more female customers at weekends.*
+## 5. Product performance:
+      - The best-selling item was T-shirts, with 70 percent of sales coming from women. The biggest loss was in jeans, with 80 per cent coming from women.
+## 6. Channel preference:
+      - The majority of the customers are between 20 and 40 years old, and both genders prefer to purchase Uniqlo offline.
+      - Only customers in Wuhan, Guangzhou, Shanghai, Xi'an and Chongqing purchase online. Customers in Guangzhou prefer to buy online, while customers in other cities prefer to buy offline. 
+         * *Recommendation: Different online marketing strategies could be adopted for Guangzhou and Wuhan.*
