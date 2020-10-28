@@ -6,7 +6,7 @@
 #### 4. What's the relationship between sales and COG? 销售额和产品成本之间的关系怎么样？
 
 ### Import packages
-''' Python
+```Python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
