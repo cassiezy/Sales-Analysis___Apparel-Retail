@@ -165,3 +165,40 @@ uni_gen.loc[uni_gen['wkd_ind'] =='Weekend', 'customer_per_day'] = uni_gen['custo
 
 uni_gen
 ```
+|gender_group |wkd_ind	|revenue  	|profit	|uni_quant_of_order	|uni_revenue_of_customer|revenue_per_day	profit_per_day	customer_per_day
+| --------|----------|-----------|--------|----------|----------|----------|-------|------ |
+|Female	|Weekday	|1541781.47	|725916	|15278	|95.322304|308356.294	|145183.2	|3055.6|
+|Female	|Weekend	|985978.53	|474065	|9884	|93.745690|492989.265	|237032.5	|4942.0|
+|Male	|Weekday	|545806.31	|246549	|5961	|90.266569|109161.262	|49309.8	|1192.2|
+|Male	|Weekend	|472764.34	|219686	|5077	|91.730576|236382.170	|109843.0	|2538.5|
+|Unkown	|Weekday	|6360.86	|2686	|79	|79.708704|1272.172	|537.2	|15.8|
+|Unkown	|Weekend	|3742.00	|1744	|46	|81.347826|1871.000	|872.0	|23.0|
+
+#### Visualization
+```python
+# sales
+sns.barplot(x = 'gender_group', y = 'revenue_per_day', hue = 'wkd_ind', data = uni_gen)
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/1.5.png)
+```python
+# profit
+sns.barplot(x = 'gender_group', y = 'profit_per_day', hue = 'wkd_ind', data = uni_gen)
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/1.6.png)
+
+```python
+# number of customers
+sns.barplot(x = 'gender_group', y = 'customer_per_day', hue = 'wkd_ind', data = uni_gen)
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/1.7.png)
+
+```python
+# per capita consumption
+sns.barplot(x = 'gender_group', y = 'uni_revenue_of_customer', hue = 'wkd_ind', data = uni_gen)
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/1.8.png)
+
+## Conclusion
+- **Female customers bring in far more daily sales and profits than male customers**
+- **For male customers: weekend daily sales/profits are almost twice as much as weekday daily sales/profit**
+- **The number of customers on weekends was much higher than that in the middle of the week, regardless of the gender of customers, but there was no significant difference in terms of per capita consumption.**
