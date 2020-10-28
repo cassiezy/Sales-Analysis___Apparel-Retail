@@ -55,6 +55,7 @@ uni_clean.describe(include='all')
 |max	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|58.000000	|12538.000000	|65.000000	|84.000000	|99.000000	|299.000000	|8400.000000	|22.000000	|6636.000000|
 
 
+
 ## Question 1. Overall sales trend through time
 + Variables to use?
    - wkd_ind, revenue, profit, uni_quant_of_order, uni_revenue_of_customer, channel, gender_group
@@ -128,11 +129,10 @@ sns.barplot(x = 'channel', y = 'uni_revenue_of_customer', hue = 'wkd_ind', data 
 ```
 ![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/1.4.png)
 
-**
+
 ## Conclusion
-1. Offline average daily sales and profits are much higher than online
-2. Offline: sales and profits on weekends are almost twice as high as mid-week
-3. But there is little difference in terms of the number of products per order and the amount spent per person
-**
+**1. Offline average daily sales and profits are much higher than online**
+**2. Offline: sales and profits on weekends are almost twice as high as mid-week
+**3. But there is little difference in terms of the number of products per order and the amount spent per person**
 
 ### B. Performance of difference gender (weekend vs. weekday)
