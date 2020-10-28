@@ -40,6 +40,18 @@ drop_idx = uni_clean[uni_clean['revenue']<0].index
 uni_clean = uni_clean.drop(drop_idx)
 uni_clean.describe(include='all')
 ```
+|   |store_id	|city	|channel	|gender_group	|age_group	|wkd_ind	|product	|customer	|revenue	|order	|quant	|unit_cost	|unit_price	|profit	|uni_quant_of_order	|uni_revenue_of_customer|
+|count	|22292	|22292	|22292	|22292	|22292	|22292	|22292	|22292.000000	|22292.000000	|22292.000000	|22292.000000	|22292.000000	|22292.000000	|22292.000000	|22292.000000	|22292.000000|
+|unique	|64	|10	|2	|3	|11	|2	|9	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN|
+|top	|207	|深圳	|Offline	|Female	|30-34	|Weekday	|T恤	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN|
+|freq	|610	|4364	18403	14207	4426	12464	10610	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+|mean	|NaN	|NaN	NaN	NaN	NaN	NaN	NaN	1.629508	159.538557	1.652028	1.858066	46.124529	84.283779	74.943747	1.114455	93.254588
+|std	|NaN	|NaN	NaN	NaN	NaN	NaN	NaN	1.785640	276.258179	1.861517	2.347353	19.124766	46.311894	179.894807	0.443968	76.634104
+|min	|NaN	|NaN	NaN	NaN	NaN	NaN	NaN	1.000000	0.000000	1.000000	1.000000	9.000000	0.000000	-650.000000	1.000000	0.000000
+|25%	|NaN	NaN	NaN	NaN	NaN	NaN	NaN	1.000000	64.000000	1.000000	1.000000	49.000000	56.000000	18.000000	1.000000	59.000000
+|50%	|NaN	|NaN	NaN	NaN	NaN	NaN	NaN	1.000000	99.000000	1.000000	1.000000	49.000000	79.000000	42.000000	1.000000	79.000000
+|75%	|NaN	|NaN	NaN	NaN	NaN	NaN	NaN	2.000000	175.000000	2.000000	2.000000	49.000000	99.000000	87.000000	1.000000	99.000000
+|max	|NaN	|NaN	NaN	NaN	NaN	NaN	NaN	58.000000	12538.000000	65.000000	84.000000	99.000000	299.000000	8400.000000	22.000000	6636.000000
 
 
 ## Question 1. Overall sales trend through time
