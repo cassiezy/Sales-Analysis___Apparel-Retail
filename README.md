@@ -105,9 +105,10 @@ plt.rcParams['font.sans-serif'] = ['simhei']
 ```
 
 ```python
-# 不同渠道周中/周末的日均销售额对比
+# sales
 sns.barplot(x = 'channel', y = 'revenue_per_day', hue = 'wkd_ind', data = uni_wkd)
 ```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/1.1.png)
 
 
 
