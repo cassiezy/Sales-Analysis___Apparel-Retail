@@ -269,28 +269,93 @@ plt.show()
 
 ## *Therefore, let's take a deeper look at T-shirts.*
 ```
+# Sales volume by gender
 uni_t_gender = uni_clean[uni_clean['product']=='T恤'].groupby(['product','gender_group'])['quant'].sum().reset_index()
 uni_t_gender
 ```
 
 |product|	gender_group|	quant|
+| --------|----------|---------|
 |T恤	|Female	|13109|
 |T恤	|Male	|5253|
 |T恤	|Unkown	|63|
 
+```
+colors = ['lightcoral', 'lightskyblue', 'yellowgreen']
+explode = (0.1, 0, 0)  # explode 1st slice
+
+# Plot a pie chart
+plt.pie(uni_t_gender['quant'], explode=explode, labels=uni_t_gender['gender_group'], colors=colors,
+autopct='%1.1f%%', shadow=True, startangle=140)
+
+plt.axis('equal')
+plt.show()
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/2.3.png)
+
+## Conclusion
+- **Women account for 70 percent of T-shirt sales volume.**
+
+
+
+### B. Loss-making product analysis
+```
+plt.rcParams['axes.unicode_minus']=False
+```
+```
+# histogram of product profit
+uni_clean['uni_profit_of_product'] = uni_clean['profit']/uni_clean['quant']
+sns.distplot(uni_clean['uni_profit_of_product'], bins=20)
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/2.4.png)
+```
+# products that are lossing money
+uni_loss = uni_clean[uni_clean['uni_profit_of_product']<0]
+sort = uni_loss.groupby(["product"])['profit'].agg(np.sum).reset_index().sort_values('profit')
+plt.figure(figsize=(10,5))
+sns.barplot(x = 'product', y = 'profit',data = sort, order=sort['product'],palette="pastel")
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/2.5.png)
+
+#### Take a deeper look into Jeans
+```
+# groupby gender
+uni_jean = uni_clean[(uni_clean['product']=='牛仔裤') & (uni_clean['profit']<0) ].groupby(['gender_group'])['profit'].sum().reset_index()
+uni_jean
+```
+|gender_group	|profit|
+|-----|-----|
+|Female	|-22975|
+|Male	|-5137|
+|Unkown	|-180|
+```
+colors = ['lightcoral', 'lightskyblue', 'yellowgreen']
+explode = (0.1, 0, 0)  # explode 1st slice
+
+# Plot a pie chart
+plt.pie(-1*uni_jean['profit'], explode=explode, labels=uni_jean['gender_group'], colors=colors,
+autopct='%1.1f%%', shadow=True, startangle=140)
+
+plt.axis('equal')
+plt.show()
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/2.6.png)
+
+## Conclusion
+- **The most loss-making product was jeans; followed by T-shirts, Sports and Seasonal products. 80% of the sales loss came from women.**
+
 
 ## 3. Which purchase channel is the most popular? 
 + Variables to use?
-   - wkd_ind, revenue, profit, uni_quant_of_order, uni_revenue_of_customer, channel, gender_group
+   - channel, gender_group, age_group, city
 
 + What data relationships are presented?    
-   - Compare sales performance of different channel/gender at weekends/weekdays
-   - Analyze from sales, profit, number of customers, number of products per order, per capita consumption and other dimensions
+   - Analyze channel preference among people of different gender, age and from different cities.
 
 + What kind of charts?    
    - Bar chart
    
-   
+#### seaborn color palette: https://seaborn.pydata.org/tutorial/color_palettes.html   
    
    
 ## 4. What's the relationship between sales and COG?
