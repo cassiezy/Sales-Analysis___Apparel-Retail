@@ -207,16 +207,78 @@ sns.barplot(x = 'gender_group', y = 'uni_revenue_of_customer', hue = 'wkd_ind', 
 
 ## Question 2. Sales performance of different categories/products 
 + Variables to use?
-   - wkd_ind, revenue, profit, uni_quant_of_order, uni_revenue_of_customer, channel, gender_group
+   - revenue, profit, quant, product
 
 + What data relationships are presented?    
-   - Compare sales performance of different channel/gender at weekends/weekdays
-   - Analyze from sales, profit, number of customers, number of products per order, per capita consumption and other dimensions
+   - Compare sales performance of different products
+   - Analyze from sales, profit, volume and other dimensions
+   - Loss-making product analysis
 
 + What kind of charts?    
-   - Bar chart
-   
-   
+   - Bar chart, pie chart
+
+### A. Performance of difference products
+```
+uni_product=uni_clean.groupby(['product']).agg({'revenue':np.sum, 'profit': np.sum, 'quant':np.sum}).reset_index().sort_values('revenue',ascending=False)
+uni_product
+```
+| |product	|revenue	|profit	|quant|
+|--|--------|--------|--------|-----|
+|0	|T-shirt	|1538744.84	|636130	|18425|
+|1	|Season	|590664.88	|275915	|5338|
+|8	|Accessories	|444685.15	|310695	|4622|
+|3	|Jeans	|246127.48	|78328	|2432|
+|2	|Sweater	|245630.80	|111427	|1356||
+|6	|Dress	|137302.78	|78617	|995|
+|5	|Socks	|127731.36	|95154	|3639|
+|7	|Sports	|118060.34	|30299	|1792|
+|4	|Shorts	|107485.88	|54081	|2821|
+
+#### Visualization
+```python
+# volume
+result = uni_clean.groupby(["product"])['quant'].agg(np.sum).reset_index().sort_values('quant',ascending=False)
+sns.barplot(x = 'product', y = 'quant', data = uni_product, order=result['product'])
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/2.1.png)
+```python
+# sales & profit
+# set width of bar
+barWidth = 0.25
+ 
+# Set position of bar on X axis
+r1 = np.arange(len(uni_product['revenue']))
+r2 = [x + barWidth for x in r1]
+ 
+# Make the plot
+plt.bar(r1, uni_product['revenue'], color='b', width=barWidth, edgecolor='white', label='revenue')
+plt.bar(r2, uni_product['profit'], color='r', width=barWidth, edgecolor='white', label='profit')
+ 
+# Add xticks on the middle of the group bars
+plt.xlabel('group', fontweight='bold')
+plt.xticks([r + barWidth for r in range(len(uni_product['revenue']))], uni_product['product'])
+ 
+# Create legend & Show graphic
+plt.legend()
+plt.show()
+```
+![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/2.2.png)
+
+## Conclusion
+- **In terms of volumes, sales and profits, T-shirts performed much better than other products, followed by Seasonal products and Accessories**
+
+## *Therefore, let's take a deeper look at T-shirts.*
+```
+uni_t_gender = uni_clean[uni_clean['product']=='T恤'].groupby(['product','gender_group'])['quant'].sum().reset_index()
+uni_t_gender
+```
+
+|product|	gender_group|	quant|
+|T恤	|Female	|13109|
+|T恤	|Male	|5253|
+|T恤	|Unkown	|63|
+
+
 ## 3. Which purchase channel is the most popular? 
 + Variables to use?
    - wkd_ind, revenue, profit, uni_quant_of_order, uni_revenue_of_customer, channel, gender_group
