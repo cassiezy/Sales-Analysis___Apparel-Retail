@@ -41,6 +41,7 @@ uni_clean = uni_clean.drop(drop_idx)
 uni_clean.describe(include='all')
 ```
 |   |store_id	|city	|channel	|gender_group	|age_group	|wkd_ind	|product	|customer	|revenue	|order	|quant	|unit_cost	|unit_price	|profit	|uni_quant_of_order	|uni_revenue_of_customer|
+| ---|-----|------|----|------|-------|-----|-----------|--------|---------|--------|--------|------|-----|--------|-------|------------------------- |
 |count	|22292	|22292	|22292	|22292	|22292	|22292	|22292	|22292.000000	|22292.000000	|22292.000000	|22292.000000	|22292.000000	|22292.000000	|22292.000000	|22292.000000	|22292.000000|
 |unique	|64	|10	|2	|3	|11	|2	|9	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN|
 |top	|207	|深圳	|Offline	|Female	|30-34	|Weekday	|T恤	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN	|NaN|
