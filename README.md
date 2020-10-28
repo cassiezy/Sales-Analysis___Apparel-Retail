@@ -1,9 +1,9 @@
 # Sales Analysis - Uniqlo
 ### Python EDA: Analyze sales data of Uniqlo China to answer the following business questions:
-#### 1. Overall sales trend through time 整体销售情况随着时间的变化是怎样的？
-#### 2. Sales performance of different categories/products 不同产品的销售情况是怎样的？
-#### 3. Which purchase channel is the most popular? 顾客偏爱哪一种购买方式？
-#### 4. What's the relationship between sales and COG? 销售额和产品成本之间的关系怎么样？
+#### 1. Overall sales trend through time 
+#### 2. Sales performance of different categories/products 
+#### 3. Which purchase channel is the most popular? 
+#### 4. What's the relationship between sales and COG? 
 
 ### Import packages
 ```Python
@@ -52,3 +52,23 @@ uni_clean.describe(include='all')
 
 + What kind of charts?    
    - Bar chart
+
+### A. Performance of difference channels (weekend vs. weekday)
+Using metrics: sales, profit, number of products per order, per capita consumption
+```Python
+# add two columns: number of products per order, per capita consumption
+uni_clean['uni_quant_of_order'] = uni_clean['quant']/uni_clean['order']
+uni_clean['uni_revenue_of_customer'] = uni_clean['revenue']/uni_clean['customer']
+
+# groupby channel and wkd_ind to see the 4 metrics
+uni_wkd=uni_clean.groupby(['channel','wkd_ind']).agg({'revenue':np.sum, 'profit': np.sum, 'uni_quant_of_order':np.mean, 'uni_revenue_of_customer':np.mean}).reset_index()
+uni_wkd
+```
+|channel	 |wkd_ind	|revenue  	|profit	|uni_quant_of_order	|uni_revenue_of_customer|
+| --------|----------|-----------|--------|--------------------|---------------------- |
+|Online	 |Weekday	|395302.56	|189110	|1.108044	         |92.739192 |
+|Online	 |Weekend	|257868.58	|127754	|1.109055	         |93.502841 |
+|Offline	 |Weekday	|1698646.08	|786041	|1.122747	         |93.686322 |
+|Offline	 |Weekend	|1204616.29	|567741	|1.106883	         |92.801170 |
+
+### B. Performance of difference gender (weekend vs. weekday)
