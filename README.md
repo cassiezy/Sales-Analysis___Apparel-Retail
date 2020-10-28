@@ -411,8 +411,8 @@ sns.heatmap(cor)
 ![image](https://github.com/cassiezy/Sales_Analysis_Uniqlo/blob/master/pic/4.1.png)
 
 ## Conclusion
-- **There is a positive correlation between unit sales and cost, with a correlation coefficient of 0.5. **
-- **The sales is strongly positively correlated with the profit, and the correlation coefficient is 0.91. **
+- **There is a positive correlation between unit sales and cost, with a correlation coefficient of 0.5.**
+- **The sales is strongly positively correlated with the profit, and the correlation coefficient is 0.91.**
 - **The correlation between the cost of goods and profit is very low, only 0.1; However, the price of goods and profits are highly correlated, with a correlation coefficient of 0.91.**
 
 
