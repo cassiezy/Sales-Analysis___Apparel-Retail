@@ -202,3 +202,42 @@ sns.barplot(x = 'gender_group', y = 'uni_revenue_of_customer', hue = 'wkd_ind', 
 - **Female customers bring in far more daily sales and profits than male customers**
 - **For male customers: weekend daily sales/profits are almost twice as much as weekday daily sales/profit**
 - **The number of customers on weekends was much higher than that in the middle of the week, regardless of the gender of customers, but there was no significant difference in terms of per capita consumption.**
+
+
+
+## Question 2. Sales performance of different categories/products 
++ Variables to use?
+   - wkd_ind, revenue, profit, uni_quant_of_order, uni_revenue_of_customer, channel, gender_group
+
++ What data relationships are presented?    
+   - Compare sales performance of different channel/gender at weekends/weekdays
+   - Analyze from sales, profit, number of customers, number of products per order, per capita consumption and other dimensions
+
++ What kind of charts?    
+   - Bar chart
+   
+   
+## 3. Which purchase channel is the most popular? 
++ Variables to use?
+   - wkd_ind, revenue, profit, uni_quant_of_order, uni_revenue_of_customer, channel, gender_group
+
++ What data relationships are presented?    
+   - Compare sales performance of different channel/gender at weekends/weekdays
+   - Analyze from sales, profit, number of customers, number of products per order, per capita consumption and other dimensions
+
++ What kind of charts?    
+   - Bar chart
+   
+   
+   
+   
+## 4. What's the relationship between sales and COG?
++ Variables to use?
+   - wkd_ind, revenue, profit, uni_quant_of_order, uni_revenue_of_customer, channel, gender_group
+
++ What data relationships are presented?    
+   - Compare sales performance of different channel/gender at weekends/weekdays
+   - Analyze from sales, profit, number of customers, number of products per order, per capita consumption and other dimensions
+
++ What kind of charts?    
+   - Bar chart
